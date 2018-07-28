@@ -16,7 +16,7 @@ class App extends PureComponent {
 
   render() {
     return !this.props.isLoading && (
-      <AppWrapper>Startttttttt</AppWrapper>
+      <AppWrapper>Start</AppWrapper>
     );
   }
 }
