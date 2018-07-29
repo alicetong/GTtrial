@@ -10,7 +10,7 @@ import Payment from './components/Payment';
 const AppWrapper = styled.div`
   height: 100%;
   position: relative;
-  font-family: Roboto;
+
 `;
 
 class App extends PureComponent {

@@ -13,7 +13,8 @@ const AppNav = styled.div`
 width: 100%;
 height: 54px;
 background:#212124; 
-display: inline-flex;
+
+overflow:hidden;
 `;
 const Navlogo = styled.img`
 width: 115px;
@@ -50,8 +51,15 @@ width: 16px;
 height: 17px;
 margin: 7px 8px 9px 8px;
 `;
+const NavLeft = styled.div`
+float: left;
+display: inline-flex;
+`;
+const NavRight = styled.div`
+float: right;
+display: inline-flex;
+`;
 const RightMenu = styled.div`
-float:right;
 display: inline-block;
 `;
 const RightIcon = styled.div`
@@ -86,6 +94,7 @@ const ProfileIcon = styled.img`
 width: 26px;
 height: 26px;
 margin-top: 5px;
+margin-right: 60px;
 border: 1px solid #fff;
 border-radius: 50%;
 cursor: pointer;
@@ -106,39 +115,42 @@ class NavBar extends React.Component {
     render() {
         return (
             <AppNav >
+                <NavLeft>
                 <Navlogo src={Logo} />
                 <SearchBox>
                     <SearchArea type="text"></SearchArea>
                     <SearchButton><SearchIcon src={IconSearch} /></SearchButton>
                 </SearchBox>
-                <RightMenu>
+                </NavLeft>
+                <NavRight>
+                    <RightMenu>
+                        <RightIcon>
+                            <MenuIcon src={IconNews} />
+                            <MenuLabel>NewFeed</MenuLabel>
+                        </RightIcon>
+                        <RightIcon>
+                            <MenuIcon src={IconOpportunity} style={{ width: '23px', height: '23px' }} />
+                            <MenuLabel>Opportunity</MenuLabel>
+                        </RightIcon>
+                        <RightIcon>
+                            <MenuIcon src={IconUpdate} style={{ width: '31px', height: '31px' }} />
+                            <MenuLabel>Update</MenuLabel>
+                        </RightIcon>
+                        <RightIcon>
+                            <MenuIcon src={IconConnection} />
+                            <MenuLabel>Connection</MenuLabel>
+                        </RightIcon>
+                        <RightIcon>
+                            <MenuIcon src={IconMessage} />
+                            <MenuLabel>Messages</MenuLabel>
+                        </RightIcon>
+                    </RightMenu>
+                    <Divider>|</Divider>
                     <RightIcon>
-                        <MenuIcon src={IconNews} />
-                        <MenuLabel>NewFeed</MenuLabel>
+                        <ProfileIcon src={IconProfile} />
+                        <ProfileMenu>Me<img src={IconArrowDown} style={{ width: '17px', height: '17px', marginTop: '-3px' }} /></ProfileMenu>
                     </RightIcon>
-                    <RightIcon>
-                        <MenuIcon src={IconOpportunity} style={{ width: '23px', height: '23px' }} />
-                        <MenuLabel>Opportunity</MenuLabel>
-                    </RightIcon>
-                    <RightIcon>
-                        <MenuIcon src={IconUpdate} style={{ width: '31px', height: '31px' }} />
-                        <MenuLabel>Update</MenuLabel>
-                    </RightIcon>
-                    <RightIcon>
-                        <MenuIcon src={IconConnection} />
-                        <MenuLabel>Connection</MenuLabel>
-                    </RightIcon>
-                    <RightIcon>
-                        <MenuIcon src={IconMessage} />
-                        <MenuLabel>Messages</MenuLabel>
-                    </RightIcon>
-                </RightMenu>
-                <Divider>|</Divider>
-                <RightIcon>
-                    <ProfileIcon src={IconProfile} />
-                    <ProfileMenu>Me<img src={IconArrowDown} style={{width: '17px',height: '17px', marginTop: '-3px'}}/></ProfileMenu>
-                </RightIcon>
-
+                </NavRight>
             </AppNav>
         );
     }
