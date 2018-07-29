@@ -9,11 +9,58 @@ import IconOpportunity from '../img/opportunityIcon.png';
 import IconUpdate from '../img/updateIcon.png';
 import IconProfile from '../img/profileIcon.png';
 import IconArrowDown from '../img/arrowDown.svg';
+
+class NavBar extends React.Component {
+    render() {
+        return (
+            <AppNav >
+                <NavLeft>
+                <Navlogo src={Logo} />
+                <SearchBox>
+                    <SearchArea type="text"></SearchArea>
+                    <SearchButton><SearchIcon src={IconSearch} /></SearchButton>
+                </SearchBox>
+                </NavLeft>
+                <NavRight>
+                    <RightMenu>
+                        <RightIcon>
+                            <MenuIcon src={IconNews} />
+                            <MenuLabel>NewFeed</MenuLabel>
+                        </RightIcon>
+                        <RightIcon>
+                            <MenuIcon src={IconOpportunity} style={{ width: '23px', height: '23px' }} />
+                            <MenuLabel>Opportunity</MenuLabel>
+                        </RightIcon>
+                        <RightIcon>
+                            <MenuIcon src={IconUpdate} style={{ width: '31px', height: '31px' }} />
+                            <MenuLabel>Update</MenuLabel>
+                        </RightIcon>
+                        <RightIcon>
+                            <MenuIcon src={IconConnection} />
+                            <MenuLabel>Connection</MenuLabel>
+                        </RightIcon>
+                        <RightIcon>
+                            <MenuIcon src={IconMessage} />
+                            <MenuLabel>Messages</MenuLabel>
+                        </RightIcon>
+                    </RightMenu>
+                    <Divider>|</Divider>
+                    <RightIcon>
+                        <ProfileIcon src={IconProfile} />
+                        <ProfileMenu>Me<img src={IconArrowDown} style={{ width: '17px', height: '17px', marginTop: '-3px' }} /></ProfileMenu>
+                    </RightIcon>
+                </NavRight>
+            </AppNav>
+        );
+    }
+}
+
+export default NavBar;
+
 const AppNav = styled.div`
 width: 100%;
 height: 54px;
 background:#212124; 
-
 overflow:hidden;
 `;
 const Navlogo = styled.img`
@@ -111,50 +158,3 @@ font-weight: 500;
 text-decoration: none solid rgb(255, 255, 255);
 text-align: center;
 `;
-class NavBar extends React.Component {
-    render() {
-        return (
-            <AppNav >
-                <NavLeft>
-                <Navlogo src={Logo} />
-                <SearchBox>
-                    <SearchArea type="text"></SearchArea>
-                    <SearchButton><SearchIcon src={IconSearch} /></SearchButton>
-                </SearchBox>
-                </NavLeft>
-                <NavRight>
-                    <RightMenu>
-                        <RightIcon>
-                            <MenuIcon src={IconNews} />
-                            <MenuLabel>NewFeed</MenuLabel>
-                        </RightIcon>
-                        <RightIcon>
-                            <MenuIcon src={IconOpportunity} style={{ width: '23px', height: '23px' }} />
-                            <MenuLabel>Opportunity</MenuLabel>
-                        </RightIcon>
-                        <RightIcon>
-                            <MenuIcon src={IconUpdate} style={{ width: '31px', height: '31px' }} />
-                            <MenuLabel>Update</MenuLabel>
-                        </RightIcon>
-                        <RightIcon>
-                            <MenuIcon src={IconConnection} />
-                            <MenuLabel>Connection</MenuLabel>
-                        </RightIcon>
-                        <RightIcon>
-                            <MenuIcon src={IconMessage} />
-                            <MenuLabel>Messages</MenuLabel>
-                        </RightIcon>
-                    </RightMenu>
-                    <Divider>|</Divider>
-                    <RightIcon>
-                        <ProfileIcon src={IconProfile} />
-                        <ProfileMenu>Me<img src={IconArrowDown} style={{ width: '17px', height: '17px', marginTop: '-3px' }} /></ProfileMenu>
-                    </RightIcon>
-                </NavRight>
-            </AppNav>
-        );
-    }
-}
-
-export default NavBar;
-

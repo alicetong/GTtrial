@@ -10,7 +10,7 @@ import Payment from './components/Payment';
 const AppWrapper = styled.div`
   height: 100%;
   position: relative;
-
+  background-color: #e8e8e8;
 `;
 
 class App extends PureComponent {
