@@ -23,4 +23,18 @@ export default () => injectGlobal`
     width: 100%;
     font-family: 'Roboto', sans-serif;
   }
+
+  p, label{
+    font-size: 14px;
+  }
+
+  [type="radio"] {
+    margin: 5px 5px 15px 0;
+  }
+
+  a,a:hover,a:focus{
+    text-decoration: none;
+    color: #ffc800;
+    font-weight: 900;
+  }
 `;

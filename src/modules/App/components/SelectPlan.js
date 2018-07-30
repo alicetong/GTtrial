@@ -13,137 +13,231 @@ import IconD2 from '../img/planD2.png';
 import Icon3 from '../img/plan3.svg';
 import IconD41 from '../img/planD41.png';
 import IconD42 from '../img/planD42.png';
+import Button from './GoTButton';
+import SideBar from './SideBar';
 class SelectPlan extends React.Component {
 
   constructor() {
     super();
 
     this.state = {
-      planSelected: 'option1'
+      paymentplan: 'option1',
+      paymentmethod: '',
+      priceMonthly: 199,
+      priceYearly: 159
     };
     this.handleChange = this.handleChange.bind(this);
     this.renderPlanHilight = this.renderPlanHilight.bind(this);
   }
 
   handleChange = (event) => {
+    console.log(event.target.name,'eventN')
+    console.log(event.target.value,'eventV')
     this.setState({
-      planSelected: event.target.value
+      [event.target.name]: event.target.value
     });
-    this.renderPlanHilight()
-  }
 
-
-  renderPlanHilight = () => {
-if (this.state.planSelected === "option2"){
-      return(
-        <div style={{ display: 'inline-flex' }}>
-        <PlanSelected>
-          <PlanSelectedIcon src={IconA1} />
-          <PlanSelectedHeader>Personal Dashboard</PlanSelectedHeader>
-          <PlanSelectedDetail>Get data on your profile traffic, job applications and competing applicants</PlanSelectedDetail>
-        </PlanSelected>
-        <PlanSelected>
-          <PlanSelectedIcon src={IconB2} />
-          <PlanSelectedHeader>Smart Recommendations</PlanSelectedHeader>
-          <PlanSelectedDetail>Receive personalized recommendations on <b>work opportunities and 15 local talents weekly</b></PlanSelectedDetail>
-        </PlanSelected>
-        <PlanSelected>
-          <PlanSelectedIcon src={Icon3} />
-          <PlanSelectedHeader>Out-of-network Messaging</PlanSelectedHeader>
-          <PlanSelectedDetail>Message users outside your connections; <b>20 users per week</b></PlanSelectedDetail>
-        </PlanSelected>
-        <PlanSelected>
-          <PlanSelectedIcon src={IconD41} />
-          <PlanSelectedHeader>Talent Finder</PlanSelectedHeader>
-          <PlanSelectedDetail>Browse and connect with talents and businesses outside of your network, with full visibility</PlanSelectedDetail>
-        </PlanSelected>
-      </div>
-      )
-    }else if (this.state.planSelected === "option3"){
-      return(
-        <div style={{ display: 'inline-flex' }}>
-        <PlanSelected>
-          <PlanSelectedIcon src={IconD1} />
-          <PlanSelectedHeader>Corporate Dashboard</PlanSelectedHeader>
-          <PlanSelectedDetail>Receive data based on our analyses and comparison of your profile traffic, applicants</PlanSelectedDetail>
-        </PlanSelected>
-        <PlanSelected>
-          <PlanSelectedIcon src={IconB2} />
-          <PlanSelectedHeader>Smart Recommendations</PlanSelectedHeader>
-          <PlanSelectedDetail>Receive personalized recommendations on <b>work opportunities and 30 local talents weekly</b></PlanSelectedDetail>
-        </PlanSelected>
-        <PlanSelected>
-          <PlanSelectedIcon src={Icon3} />
-          <PlanSelectedHeader>Out-of-network Messaging</PlanSelectedHeader>
-          <PlanSelectedDetail>Message users outside your connections; <b>30 users per week</b></PlanSelectedDetail>
-        </PlanSelected>
-        <PlanSelected>
-          <PlanSelectedIcon src={IconD42} />
-          <PlanSelectedHeader>Opportunity Posts</PlanSelectedHeader>
-          <PlanSelectedDetail>Post opportunities and projects for recruitment or collaboration;<b> 2 posts simultaneously</b></PlanSelectedDetail>
-        </PlanSelected>
-      </div>
-      )
-    }else if (this.state.planSelected === "option4"){
-      return(
-        <div style={{ display: 'inline-flex' }}>
-        <PlanSelected>
-          <PlanSelectedIcon src={IconD1} />
-          <PlanSelectedHeader>Corporate Dashboard</PlanSelectedHeader>
-          <PlanSelectedDetail>Receive data based on our analyses and comparison of your profile traffic, applicants</PlanSelectedDetail>
-        </PlanSelected>
-        <PlanSelected>
-          <PlanSelectedIcon src={IconD2} />
-          <PlanSelectedHeader>Global Recommendations</PlanSelectedHeader>
-          <PlanSelectedDetail>Receive personalized recommendations on <b>partnerships and 50 international talents weekly</b></PlanSelectedDetail>
-        </PlanSelected>
-        <PlanSelected>
-          <PlanSelectedIcon src={Icon3} />
-          <PlanSelectedHeader>Out-of-network Messaging</PlanSelectedHeader>
-          <PlanSelectedDetail>Message users outside your connections; <b>40 users per week</b></PlanSelectedDetail>
-        </PlanSelected>
-        <PlanSelected>
-          <PlanSelectedIcon src={IconD41} />
-          <PlanSelectedIcon src={IconD42} />
-          <PlanSelectedHeader>Opportunity Posts</PlanSelectedHeader>
-          <PlanSelectedDetail>Post opportunities and projects for recruitment or collaboration;<b> 5 posts simultaneously</b></PlanSelectedDetail>
-        </PlanSelected>
-      </div>
-      )
-    }else{
-      return(
-        <div style={{ display: 'inline-flex' }}>
-        <PlanSelected>
-          <PlanSelectedIcon src={IconA1} />
-          <PlanSelectedHeader>Personal Dashboard</PlanSelectedHeader>
-          <PlanSelectedDetail>Get data on your profile traffic, job applications and competing applicants</PlanSelectedDetail>
-        </PlanSelected>
-        <PlanSelected>
-          <PlanSelectedIcon src={IconA2} />
-          <PlanSelectedHeader>Work Recommendations</PlanSelectedHeader>
-          <PlanSelectedDetail>Receive personalized recommendations on work opportunities</PlanSelectedDetail>
-        </PlanSelected>
-        <PlanSelected>
-          <PlanSelectedIcon src={Icon3} />
-          <PlanSelectedHeader>Out-of-network Messaging</PlanSelectedHeader>
-          <PlanSelectedDetail>Message users outside your connections; <b>5 users per week</b></PlanSelectedDetail>
-        </PlanSelected>
-        <PlanSelected>
-          <PlanSelectedIcon src={IconA4} />
-          <PlanSelectedHeader>Featured application</PlanSelectedHeader>
-          <PlanSelectedDetail>Let your job applications appear prioritized and highlighted to employers</PlanSelectedDetail>
-        </PlanSelected>
-      </div>
-      )
+    if(event.target.name === 'paymentplan'){
+      if (event.target.value === 'option2') {
+        this.setState({
+          priceMonthly: 495,
+          priceYearly: 395
+        })
+      } else if (event.target.value === 'option3') {
+        this.setState({
+          priceMonthly: 675,
+          priceYearly: 539
+        })
+      } else if (event.target.value === 'option4') {
+        this.setState({
+          priceMonthly: 999,
+          priceYearly: 799
+        })
+      } else {
+        this.setState({
+          priceMonthly: 199,
+          priceYearly: 159
+        })
+      }
     }
 
 
   }
 
+  renderPlanHilight = () => {
+    if (this.state.paymentplan === 'option2') {
+      return (
+        <div style={{ display: 'inline-flex' }}>
+          <PlanSelected>
+            <PlanSelectedIcon src={IconA1} />
+            <PlanSelectedHeader>Personal Dashboard</PlanSelectedHeader>
+            <PlanSelectedDetail>Get data on your profile traffic, job applications and competing applicants</PlanSelectedDetail>
+          </PlanSelected>
+          <PlanSelected>
+            <PlanSelectedIcon src={IconB2} />
+            <PlanSelectedHeader>Smart Recommendations</PlanSelectedHeader>
+            <PlanSelectedDetail>Receive personalized recommendations on <b>work opportunities and 15 local talents weekly</b></PlanSelectedDetail>
+          </PlanSelected>
+          <PlanSelected>
+            <PlanSelectedIcon src={Icon3} />
+            <PlanSelectedHeader>Out-of-network Messaging</PlanSelectedHeader>
+            <PlanSelectedDetail>Message users outside your connections; <b>20 users per week</b></PlanSelectedDetail>
+          </PlanSelected>
+          <PlanSelected>
+            <PlanSelectedIcon src={IconD41} style={{ width: '59px', height: '59px', marginTop: '-12px', marginBottom: '-11px' }} />
+            <PlanSelectedHeader>Talent Finder</PlanSelectedHeader>
+            <PlanSelectedDetail>Browse and connect with talents and businesses outside of your network, with full visibility</PlanSelectedDetail>
+          </PlanSelected>
+        </div>
+      )
+    } else if (this.state.paymentplan === 'option3') {
+      return (
+        <div style={{ display: 'inline-flex' }}>
+          <PlanSelected>
+            <PlanSelectedIcon src={IconD1} />
+            <PlanSelectedHeader>Corporate Dashboard</PlanSelectedHeader>
+            <PlanSelectedDetail>Receive data based on our analyses and comparison of your profile traffic, applicants</PlanSelectedDetail>
+          </PlanSelected>
+          <PlanSelected>
+            <PlanSelectedIcon src={IconB2} />
+            <PlanSelectedHeader>Smart Recommendations</PlanSelectedHeader>
+            <PlanSelectedDetail>Receive personalized recommendations on <b>work opportunities and 30 local talents weekly</b></PlanSelectedDetail>
+          </PlanSelected>
+          <PlanSelected>
+            <PlanSelectedIcon src={Icon3} />
+            <PlanSelectedHeader>Out-of-network Messaging</PlanSelectedHeader>
+            <PlanSelectedDetail>Message users outside your connections; <b>30 users per week</b></PlanSelectedDetail>
+          </PlanSelected>
+          <PlanSelected>
+            <PlanSelectedIcon src={IconD42} />
+            <PlanSelectedHeader>Opportunity Posts</PlanSelectedHeader>
+            <PlanSelectedDetail>Post opportunities and projects for recruitment or collaboration;<b> 2 posts simultaneously</b></PlanSelectedDetail>
+          </PlanSelected>
+        </div>
+      )
+    } else if (this.state.paymentplan === 'option4') {
+      return (
+        <div style={{ display: 'inline-flex' }}>
+          <PlanSelected>
+            <PlanSelectedIcon src={IconD1} />
+            <PlanSelectedHeader>Corporate Dashboard</PlanSelectedHeader>
+            <PlanSelectedDetail>Receive data based on our analyses and comparison of your profile traffic, applicants</PlanSelectedDetail>
+          </PlanSelected>
+          <PlanSelected>
+            <PlanSelectedIcon src={IconD2} />
+            <PlanSelectedHeader>Global Recommendations</PlanSelectedHeader>
+            <PlanSelectedDetail>Receive personalized recommendations on <b>partnerships and 50 international talents weekly</b></PlanSelectedDetail>
+          </PlanSelected>
+          <PlanSelected>
+            <PlanSelectedIcon src={Icon3} />
+            <PlanSelectedHeader>Out-of-network Messaging</PlanSelectedHeader>
+            <PlanSelectedDetail>Message users outside your connections; <b>40 users per week</b></PlanSelectedDetail>
+          </PlanSelected>
+          <PlanSelected>
+            <PlanSelectedIcon src={IconD41} />
+            <PlanSelectedIcon src={IconD42} />
+            <PlanSelectedHeader>Opportunity Posts</PlanSelectedHeader>
+            <PlanSelectedDetail>Post opportunities and projects for recruitment or collaboration;<b> 5 posts simultaneously</b></PlanSelectedDetail>
+          </PlanSelected>
+        </div>
+      )
+    } else {
+      return (
+        <div style={{ display: 'inline-flex' }}>
+          <PlanSelected>
+            <PlanSelectedIcon src={IconA1} />
+            <PlanSelectedHeader>Personal Dashboard</PlanSelectedHeader>
+            <PlanSelectedDetail>Get data on your profile traffic, job applications and competing applicants</PlanSelectedDetail>
+          </PlanSelected>
+          <PlanSelected>
+            <PlanSelectedIcon src={IconA2} />
+            <PlanSelectedHeader>Work Recommendations</PlanSelectedHeader>
+            <PlanSelectedDetail>Receive personalized recommendations on work opportunities</PlanSelectedDetail>
+          </PlanSelected>
+          <PlanSelected>
+            <PlanSelectedIcon src={Icon3} />
+            <PlanSelectedHeader>Out-of-network Messaging</PlanSelectedHeader>
+            <PlanSelectedDetail>Message users outside your connections; <b>5 users per week</b></PlanSelectedDetail>
+          </PlanSelected>
+          <PlanSelected>
+            <PlanSelectedIcon src={IconA4} />
+            <PlanSelectedHeader>Featured application</PlanSelectedHeader>
+            <PlanSelectedDetail>Let your job applications appear prioritized and highlighted to employers</PlanSelectedDetail>
+          </PlanSelected>
+        </div>
+      )
+    }
+
+
+  }
+  renderApplyMember = () => {
+    if (this.state.paymentplan === 'option1') {
+      return (
+        <MainPanel>
+          <section style={{ padding: '5px 27px 33px 29px' }}>
+            <PanelHeaderText>Apply this membership</PanelHeaderText>
+            <PanelSubHeaderText>Select to which profile you will apply the premium plan chosen above</PanelSubHeaderText>
+            <div style={{ marginTop: '19px' }}>
+              <ChoiceBox><input type='radio' name='profile' value='individual' />
+                <b>Individual Profile: Paul Lee </b><br />
+              </ChoiceBox>
+              <ChoiceBox><input type='radio' name='profile' value='corporate' />
+                <b>Corporate Profile: GoTalents</b><br />
+              </ChoiceBox>
+            </div>
+          </section>
+        </MainPanel>
+      )
+    }
+    else {
+      return (null)
+    }
+  }
+
+  renderSubsPeriod = () => {
+    if(this.state.paymentmethod !== '' && this.state.paymentmethod === 'optionA'){
+      return (
+        <div>              
+          <SelectMonth>
+          {this.getRangeOptions(3,12)}
+          </SelectMonth>
+          Months
+        </div>
+        )
+    }else if (this.state.paymentmethod !== '' && this.state.paymentmethod === 'optionB'){
+      return (
+        <div>              
+          <SelectMonth>
+          {this.getRangeOptions(1,5)}
+          </SelectMonth>
+          Year(s)
+        </div>
+        )
+    }else{
+      return (
+        <div>              
+          <SelectMonth>
+          {this.getRangeOptions(1,12)}
+          </SelectMonth>
+          Months
+        </div>
+        )
+    }
+
+  }
+
+  getRangeOptions = (start,end) => {
+    var arr = [];
+    for (let i = start; i <= end; i++) {
+        arr.push(<option key={i} value="{i}">{i}</option>)
+    }
+    return arr; 
+  }
 
   render() {
     const borderSelected = '2px solid #ffc800'
     const borderChoices = '1px solid #d1d1d1'
+    const { priceMonthly, priceYearly } = this.state
     return (
       <div>
         <AdvertiseText>Online MBA in 1 Year  — Online MBA International Business in 1 Year. Get more information!</AdvertiseText>
@@ -157,13 +251,13 @@ if (this.state.planSelected === "option2"){
                 <PanelSubHeaderText>Explore and choose a plan that best helps your creative journey</PanelSubHeaderText>
                 <Planarea>
                   <PlanForm>
-                    <FormChoice borderColor = {this.state.planSelected === "option1" ? borderSelected : borderChoices}>
+                    <FormChoice borderColor={this.state.paymentplan === 'option1' ? borderSelected : borderChoices}>
                       <ChoiceBox>
                         <Choice
-                          type="radio"
-                          name="paymentplan"
-                          value="option1"
-                          checked={this.state.planSelected === "option1"}
+                          type='radio'
+                          name='paymentplan'
+                          value='option1'
+                          checked={this.state.paymentplan === 'option1'}
                           onChange={this.handleChange} />
                         <div>
                           <ChoiceIcon src={IconA} />
@@ -173,12 +267,12 @@ if (this.state.planSelected === "option2"){
                         </div>
                       </ChoiceBox>
                     </FormChoice>
-                    <FormChoice borderColor = {this.state.planSelected === "option2" ? borderSelected : borderChoices}>
+                    <FormChoice borderColor={this.state.paymentplan === 'option2' ? borderSelected : borderChoices}>
                       <ChoiceBox><Choice
-                        type="radio"
-                        name="paymentplan"
-                        value="option2"
-                        checked={this.state.planSelected === "option2"}
+                        type='radio'
+                        name='paymentplan'
+                        value='option2'
+                        checked={this.state.paymentplan === 'option2'}
                         onChange={this.handleChange} />
                         <div>
                           <ChoiceIcon src={IconB} />
@@ -188,12 +282,12 @@ if (this.state.planSelected === "option2"){
                         </div>
                       </ChoiceBox>
                     </FormChoice>
-                    <FormChoice borderColor = {this.state.planSelected === "option3" ? borderSelected : borderChoices}>
+                    <FormChoice borderColor={this.state.paymentplan === 'option3' ? borderSelected : borderChoices}>
                       <ChoiceBox><Choice
-                        type="radio"
-                        name="paymentplan"
-                        value="option3"
-                        checked={this.state.planSelected === "option3"}
+                        type='radio'
+                        name='paymentplan'
+                        value='option3'
+                        checked={this.state.paymentplan === 'option3'}
                         onChange={this.handleChange} />
                         <div>
                           <ChoiceIcon src={IconC} />
@@ -203,12 +297,12 @@ if (this.state.planSelected === "option2"){
                         </div>
                       </ChoiceBox>
                     </FormChoice>
-                    <FormChoice borderColor = {this.state.planSelected === "option4" ? borderSelected : borderChoices}>
+                    <FormChoice borderColor={this.state.paymentplan === 'option4' ? borderSelected : borderChoices}>
                       <ChoiceBox><Choice
-                        type="radio"
-                        name="paymentplan"
-                        value="option4"
-                        checked={this.state.planSelected === "option4"}
+                        type='radio'
+                        name='paymentplan'
+                        value='option4'
+                        checked={this.state.paymentplan === 'option4'}
                         onChange={this.handleChange} />
                         <div>
                           <ChoiceIcon src={IconD} />
@@ -225,58 +319,47 @@ if (this.state.planSelected === "option2"){
               <section style={{ padding: '0px 25px 20px 25px' }}>
                 <PlanSelectedTopic>Key Highlights</PlanSelectedTopic>
                 {this.renderPlanHilight()}
-
               </section>
             </div>
           </MainPanel>
-          <SidePanel>
-            <div style={{ width: '100%', position: 'relative' }}>
-              <PanelHeaderText style={{ padding: '0px 0px 7px 18px' }}>Request Summary</PanelHeaderText>
-              <div>
-                <hr />
-                <section style={{ padding: '5px 27px 33px 29px' }}>
-                  <PanelSubHeaderText>Plan Type</PanelSubHeaderText>
-                  <PanelSubHeaderText>Duration</PanelSubHeaderText>
-                  <PanelSubHeaderText>Payment Information</PanelSubHeaderText>
-                  <PanelSubHeaderText>Add Quota</PanelSubHeaderText>
-                  <PanelSubHeaderText>yes</PanelSubHeaderText>
-                </section>
-              </div>
-              <div style={{ position: 'absolute', bottom: '0', width: '100%' }}>
-                <hr />
-                <section style={{ padding: '5px 27px 20px 29px', display: 'inline-flex', width: '100%' }}>
-                  <span style={{ textAlign: 'left' }}>Total Price </span>
-                  <span style={{ textAlign: 'right' }}>Unknown</span>
-                </section>
-              </div>
-            </div>
-          </SidePanel>
-          <PaymentMethod>
+          <SideBar/>
+          {this.renderApplyMember()}
+          <MainPanel>
             <section style={{ padding: '5px 27px 33px 29px' }}>
               <PanelHeaderText>Payment method</PanelHeaderText>
               <PanelSubHeaderText>Subscribe monthly or annually, but fees will always be charged monthly</PanelSubHeaderText>
               <PayChoices>
                 <div style={{ width: '50%' }}>
-                  <ChoiceBox><input type="radio" name="paymentmethod" value="optionA" />
+                  <ChoiceBox>
+                  <input type='radio' 
+                    name='paymentmethod' 
+                    value='optionA' 
+                    checked={this.state.paymentmethod === 'optionA'}
+                    onChange={this.handleChange} />
                     Subscribe monthly <br />
                   </ChoiceBox>
-                  <br /><br />
+                  <br />
                   <PriceBoxDetail>
-                    <PriceBox >
-                      <h2>HKD 999</h2>
+                    <PriceBox style={{ paddingTop: '8px' }}>
+                      <h2>HKD {priceMonthly}</h2>
                       <br />
                       <PriceCondition>Charged every month, for minimum 3-months' purchase</PriceCondition>
                     </PriceBox >
                   </PriceBoxDetail>
                 </div>
                 <div style={{ width: '50%' }}>
-                  <ChoiceBox><input type="radio" name="paymentmethod" value="optionB" />
+                  <ChoiceBox>
+                    <input type='radio' 
+                    name='paymentmethod' 
+                    value='optionB' 
+                    checked={this.state.paymentmethod === 'optionB'}
+                    onChange={this.handleChange} />
                     Subscribe annually<br />
                   </ChoiceBox>
                   <PriceBoxDetail>
-                    <PaymentMText>Discount offered for annual subscription!</PaymentMText>
+                    <YellowText>Discount offered for annual subscription!</YellowText>
                     <PriceBox >
-                      <h2>HKD 799</h2>
+                      <h2>HKD {priceYearly}</h2>
                       <br />
                       <PriceCondition>Charged every month, for 1-year purchase</PriceCondition>
                     </PriceBox>
@@ -284,41 +367,38 @@ if (this.state.planSelected === "option2"){
                 </div>
               </PayChoices>
             </section>
-          </PaymentMethod>
-          <SubsBox>
+          </MainPanel>
+          <MainPanel>
             <section style={{ padding: '5px 27px 33px 29px' }}>
               <PanelHeaderText>Subscription duration</PanelHeaderText>
               <PanelSubHeaderText>Indicate how long you want to be a member to this plan</PanelSubHeaderText>
               <p>Please select number of months you want to subscribe.</p>
-              <SelectMonth>
-                <option value="3">3</option>
-              </SelectMonth>
-              months
+              {this.renderSubsPeriod()}
             </section>
-          </SubsBox>
-          <QuotaBox>
+          </MainPanel>
+          <MainPanel>
             <section style={{ padding: '5px 27px 33px 29px', width: '100%' }}>
               <PanelHeaderText>Added quota</PanelHeaderText>
               <PanelSubHeaderText>Select to add quota to the below features</PanelSubHeaderText>
               <PayChoices>
                 <div >
-                  <ChoiceBox><input type="radio" name="quota" value="true" />
+                  <ChoiceBox><input type='radio' name='quota' value='true' />
                     Add quota <br />
                   </ChoiceBox>
                   <br />
                   <PriceBoxDetail>
                     <p>Out-of-network Messaging  <b>+3 per week</b></p>
                     <p>Opportunity Post  <b>+1</b></p>
-                    <p style={{ color: '#8c8c8c' }}>HKD 30 per month</p>
-                    <PaymentMText>Learn More</PaymentMText>
+                    <p style={{ color: '#8c8c8c', margin: '20px 0px' }}>HKD 30 per month</p>
+                    <a href="#">Learn More</a>
                   </PriceBoxDetail>
                 </div>
               </PayChoices>
               <hr />
-              <p>By clicking "Accept and Continue", you agree to the rules, restrictions and terms & conditions</p>
-              <button> Confirm and Pay </button>
+              <p>By clicking 'Accept and Continue', you agree to the rules, restrictions and <a href="#">terms & conditions</a></p>
+              <Button align='right' text='Confirm and Pay' />
             </section>
-          </QuotaBox>
+          </MainPanel>
         </PanelArea>
       </div>
     );
@@ -349,48 +429,12 @@ box-shadow: 0px 1px 2px rgba(0,0,0,0.4);
   grid-column: 1 / span 5;
 }
 `;
-const SidePanel = styled.div`
-grid-column: span 1;
-display:flex;
-background-color: #ffffff;
-box-shadow: 0px 1px 2px rgba(0,0,0,0.4);
-@media (max-width: 700px) {
-  grid-column: 1 / span 5;
-}
-`;
 
-const PaymentMethod = styled.div`
-grid-column: 1 / span 3;
-display:flex;
-background-color: #ffffff;
-box-shadow: 0px 1px 2px rgba(0,0,0,0.4);
-@media (max-width: 700px) {
-  grid-column: 1 / span 5;
-}
-`;
-const SubsBox = styled.div`
-grid-column: 1 / span 3;
-display:flex;
-background-color: #ffffff;
-box-shadow: 0px 1px 2px rgba(0,0,0,0.4);
-@media (max-width: 700px) {
-  grid-column: 1 / span 5;
-}
-`;
-const QuotaBox = styled.div`
-grid-column: 1 / span 3;
-display:flex;
-background-color: #ffffff;
-box-shadow: 0px 1px 2px rgba(0,0,0,0.4);
-@media (max-width: 700px) {
-  grid-column: 1 / span 5;
-}
-`;
 const PanelHeaderText = styled.h3`
 font-size: 16px;
 color: #303030;
 font-weight: 700;
-margin: 26px 0px 5px 0px;
+margin: 16px 0px 5px 0px;
 `;
 const PanelSubHeaderText = styled.h4`
 font-size: 14px;
@@ -420,10 +464,10 @@ background-color: #ffffff;
 const ChoiceBox = styled.label`
 text-align: center;
 cursor: pointer;
+
 `;
 const Choice = styled.input`
 visibility:hidden;
-
 `;
 
 const ChoiceTopic = styled.h5`
@@ -502,13 +546,13 @@ display: inline-flex;
 margin: 38px 0px 0px 0px;
 
 `;
-const PaymentMText = styled.p`
-
+const YellowText = styled.p`
+font-weight: 900;
 font-size: 14px;
 color: #ffc800;
 text-decoration: none solid rgb(255, 200, 0);
 line-height: 16px;
-margin: 10px 0px 30px 0px;
+margin: 0px 0px 30px 0px;
 `;
 const PriceCondition = styled.h5`
 font-weight: normal;
@@ -521,7 +565,7 @@ const PriceBox = styled.div`
 text-align: 'left'
 `;
 const PriceBoxDetail = styled.div`
-padding: 0px 0px 0px 10px;
+padding: 0px 0px 0px 16px;
 width: 100%;
 `;
 const SelectMonth = styled.select`

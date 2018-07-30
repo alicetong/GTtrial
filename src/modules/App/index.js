@@ -4,8 +4,9 @@ import styled from 'styled-components';
 import { actions } from '~/Store';
 import {BrowserRouter, Route} from 'react-router-dom';
 import SelectPlan from './components/SelectPlan';
-import Navbar from './components/NavBar';
 import Payment from './components/Payment';
+import Navbar from './components/NavBar';
+import Footer from './components/Footer';
 
 const AppWrapper = styled.div`
   height: 100%;
