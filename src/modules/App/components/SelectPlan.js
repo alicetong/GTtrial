@@ -4,13 +4,146 @@ import IconA from '../img/planA.svg';
 import IconB from '../img/planB.svg';
 import IconC from '../img/planC.svg';
 import IconD from '../img/planD.svg';
-import IconA1 from '../img/planA1.png';
+import IconA1 from '../img/planA1.svg';
 import IconA2 from '../img/planA2.png';
-import IconA3 from '../img/planA3.svg';
-import IconA41 from '../img/planA41.png';
-import IconA42 from '../img/planA42.png';
+import IconA4 from '../img/planA4.svg';
+import IconB2 from '../img/planB2.svg';
+import IconD1 from '../img/planD1.png';
+import IconD2 from '../img/planD2.png';
+import Icon3 from '../img/plan3.svg';
+import IconD41 from '../img/planD41.png';
+import IconD42 from '../img/planD42.png';
 class SelectPlan extends React.Component {
+
+  constructor() {
+    super();
+
+    this.state = {
+      planSelected: 'option1'
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.renderPlanHilight = this.renderPlanHilight.bind(this);
+  }
+
+  handleChange = (event) => {
+    this.setState({
+      planSelected: event.target.value
+    });
+    this.renderPlanHilight()
+  }
+
+
+  renderPlanHilight = () => {
+if (this.state.planSelected === "option2"){
+      return(
+        <div style={{ display: 'inline-flex' }}>
+        <PlanSelected>
+          <PlanSelectedIcon src={IconA1} />
+          <PlanSelectedHeader>Personal Dashboard</PlanSelectedHeader>
+          <PlanSelectedDetail>Get data on your profile traffic, job applications and competing applicants</PlanSelectedDetail>
+        </PlanSelected>
+        <PlanSelected>
+          <PlanSelectedIcon src={IconB2} />
+          <PlanSelectedHeader>Smart Recommendations</PlanSelectedHeader>
+          <PlanSelectedDetail>Receive personalized recommendations on <b>work opportunities and 15 local talents weekly</b></PlanSelectedDetail>
+        </PlanSelected>
+        <PlanSelected>
+          <PlanSelectedIcon src={Icon3} />
+          <PlanSelectedHeader>Out-of-network Messaging</PlanSelectedHeader>
+          <PlanSelectedDetail>Message users outside your connections; <b>20 users per week</b></PlanSelectedDetail>
+        </PlanSelected>
+        <PlanSelected>
+          <PlanSelectedIcon src={IconD41} />
+          <PlanSelectedHeader>Talent Finder</PlanSelectedHeader>
+          <PlanSelectedDetail>Browse and connect with talents and businesses outside of your network, with full visibility</PlanSelectedDetail>
+        </PlanSelected>
+      </div>
+      )
+    }else if (this.state.planSelected === "option3"){
+      return(
+        <div style={{ display: 'inline-flex' }}>
+        <PlanSelected>
+          <PlanSelectedIcon src={IconD1} />
+          <PlanSelectedHeader>Corporate Dashboard</PlanSelectedHeader>
+          <PlanSelectedDetail>Receive data based on our analyses and comparison of your profile traffic, applicants</PlanSelectedDetail>
+        </PlanSelected>
+        <PlanSelected>
+          <PlanSelectedIcon src={IconB2} />
+          <PlanSelectedHeader>Smart Recommendations</PlanSelectedHeader>
+          <PlanSelectedDetail>Receive personalized recommendations on <b>work opportunities and 30 local talents weekly</b></PlanSelectedDetail>
+        </PlanSelected>
+        <PlanSelected>
+          <PlanSelectedIcon src={Icon3} />
+          <PlanSelectedHeader>Out-of-network Messaging</PlanSelectedHeader>
+          <PlanSelectedDetail>Message users outside your connections; <b>30 users per week</b></PlanSelectedDetail>
+        </PlanSelected>
+        <PlanSelected>
+          <PlanSelectedIcon src={IconD42} />
+          <PlanSelectedHeader>Opportunity Posts</PlanSelectedHeader>
+          <PlanSelectedDetail>Post opportunities and projects for recruitment or collaboration;<b> 2 posts simultaneously</b></PlanSelectedDetail>
+        </PlanSelected>
+      </div>
+      )
+    }else if (this.state.planSelected === "option4"){
+      return(
+        <div style={{ display: 'inline-flex' }}>
+        <PlanSelected>
+          <PlanSelectedIcon src={IconD1} />
+          <PlanSelectedHeader>Corporate Dashboard</PlanSelectedHeader>
+          <PlanSelectedDetail>Receive data based on our analyses and comparison of your profile traffic, applicants</PlanSelectedDetail>
+        </PlanSelected>
+        <PlanSelected>
+          <PlanSelectedIcon src={IconD2} />
+          <PlanSelectedHeader>Global Recommendations</PlanSelectedHeader>
+          <PlanSelectedDetail>Receive personalized recommendations on <b>partnerships and 50 international talents weekly</b></PlanSelectedDetail>
+        </PlanSelected>
+        <PlanSelected>
+          <PlanSelectedIcon src={Icon3} />
+          <PlanSelectedHeader>Out-of-network Messaging</PlanSelectedHeader>
+          <PlanSelectedDetail>Message users outside your connections; <b>40 users per week</b></PlanSelectedDetail>
+        </PlanSelected>
+        <PlanSelected>
+          <PlanSelectedIcon src={IconD41} />
+          <PlanSelectedIcon src={IconD42} />
+          <PlanSelectedHeader>Opportunity Posts</PlanSelectedHeader>
+          <PlanSelectedDetail>Post opportunities and projects for recruitment or collaboration;<b> 5 posts simultaneously</b></PlanSelectedDetail>
+        </PlanSelected>
+      </div>
+      )
+    }else{
+      return(
+        <div style={{ display: 'inline-flex' }}>
+        <PlanSelected>
+          <PlanSelectedIcon src={IconA1} />
+          <PlanSelectedHeader>Personal Dashboard</PlanSelectedHeader>
+          <PlanSelectedDetail>Get data on your profile traffic, job applications and competing applicants</PlanSelectedDetail>
+        </PlanSelected>
+        <PlanSelected>
+          <PlanSelectedIcon src={IconA2} />
+          <PlanSelectedHeader>Work Recommendations</PlanSelectedHeader>
+          <PlanSelectedDetail>Receive personalized recommendations on work opportunities</PlanSelectedDetail>
+        </PlanSelected>
+        <PlanSelected>
+          <PlanSelectedIcon src={Icon3} />
+          <PlanSelectedHeader>Out-of-network Messaging</PlanSelectedHeader>
+          <PlanSelectedDetail>Message users outside your connections; <b>5 users per week</b></PlanSelectedDetail>
+        </PlanSelected>
+        <PlanSelected>
+          <PlanSelectedIcon src={IconA4} />
+          <PlanSelectedHeader>Featured application</PlanSelectedHeader>
+          <PlanSelectedDetail>Let your job applications appear prioritized and highlighted to employers</PlanSelectedDetail>
+        </PlanSelected>
+      </div>
+      )
+    }
+
+
+  }
+
+
   render() {
+    const borderSelected = '2px solid #ffc800'
+    const borderChoices = '1px solid #d1d1d1'
     return (
       <div>
         <AdvertiseText>Online MBA in 1 Year  — Online MBA International Business in 1 Year. Get more information!</AdvertiseText>
@@ -24,9 +157,14 @@ class SelectPlan extends React.Component {
                 <PanelSubHeaderText>Explore and choose a plan that best helps your creative journey</PanelSubHeaderText>
                 <Planarea>
                   <PlanForm>
-                    <FormChoice>
+                    <FormChoice borderColor = {this.state.planSelected === "option1" ? borderSelected : borderChoices}>
                       <ChoiceBox>
-                        <Choice type="radio" name="paymentplan" value="option1" />
+                        <Choice
+                          type="radio"
+                          name="paymentplan"
+                          value="option1"
+                          checked={this.state.planSelected === "option1"}
+                          onChange={this.handleChange} />
                         <div>
                           <ChoiceIcon src={IconA} />
                           <ChoiceTopic>Plan A</ChoiceTopic>
@@ -35,8 +173,13 @@ class SelectPlan extends React.Component {
                         </div>
                       </ChoiceBox>
                     </FormChoice>
-                    <FormChoice>
-                      <ChoiceBox><Choice type="radio" name="paymentplan" value="option2" />
+                    <FormChoice borderColor = {this.state.planSelected === "option2" ? borderSelected : borderChoices}>
+                      <ChoiceBox><Choice
+                        type="radio"
+                        name="paymentplan"
+                        value="option2"
+                        checked={this.state.planSelected === "option2"}
+                        onChange={this.handleChange} />
                         <div>
                           <ChoiceIcon src={IconB} />
                           <ChoiceTopic>Plan B</ChoiceTopic>
@@ -45,8 +188,13 @@ class SelectPlan extends React.Component {
                         </div>
                       </ChoiceBox>
                     </FormChoice>
-                    <FormChoice>
-                      <ChoiceBox><Choice type="radio" name="paymentplan" value="option3" />
+                    <FormChoice borderColor = {this.state.planSelected === "option3" ? borderSelected : borderChoices}>
+                      <ChoiceBox><Choice
+                        type="radio"
+                        name="paymentplan"
+                        value="option3"
+                        checked={this.state.planSelected === "option3"}
+                        onChange={this.handleChange} />
                         <div>
                           <ChoiceIcon src={IconC} />
                           <ChoiceTopic>Plan C</ChoiceTopic>
@@ -55,8 +203,13 @@ class SelectPlan extends React.Component {
                         </div>
                       </ChoiceBox>
                     </FormChoice>
-                    <FormChoice>
-                      <ChoiceBox><Choice type="radio" name="paymentplan" value="option4" />
+                    <FormChoice borderColor = {this.state.planSelected === "option4" ? borderSelected : borderChoices}>
+                      <ChoiceBox><Choice
+                        type="radio"
+                        name="paymentplan"
+                        value="option4"
+                        checked={this.state.planSelected === "option4"}
+                        onChange={this.handleChange} />
                         <div>
                           <ChoiceIcon src={IconD} />
                           <ChoiceTopic>Plan D</ChoiceTopic>
@@ -71,29 +224,8 @@ class SelectPlan extends React.Component {
               <hr />
               <section style={{ padding: '0px 25px 20px 25px' }}>
                 <PlanSelectedTopic>Key Highlights</PlanSelectedTopic>
-                <div style={{ display: 'inline-flex' }}>
-                  <PlanSelected>
-                    <PlanSelectedIcon src={IconA1} />
-                    <PlanSelectedHeader>Corporate Dashboard</PlanSelectedHeader>
-                    <PlanSelectedDetail>Receive data based on our analyses and comparison of your profile traffic, applicants</PlanSelectedDetail>
-                  </PlanSelected>
-                  <PlanSelected>
-                    <PlanSelectedIcon src={IconA2} />
-                    <PlanSelectedHeader>Global Recommendations</PlanSelectedHeader>
-                    <PlanSelectedDetail>Receive personalized recommendations on <b>partnerships and 50 international talents weekly</b></PlanSelectedDetail>
-                  </PlanSelected>
-                  <PlanSelected>
-                    <PlanSelectedIcon src={IconA3} />
-                    <PlanSelectedHeader>Out-of-network Messaging</PlanSelectedHeader>
-                    <PlanSelectedDetail>Message users outside your connections; <b>40 users per week</b></PlanSelectedDetail>
-                  </PlanSelected>
-                  <PlanSelected>
-                    <PlanSelectedIcon src={IconA41} />
-                    <PlanSelectedIcon src={IconA42} />
-                    <PlanSelectedHeader>Opportunity Posts</PlanSelectedHeader>
-                    <PlanSelectedDetail>Post opportunities and projects for recruitment or collaboration;<b> 5 posts simultaneously</b></PlanSelectedDetail>
-                  </PlanSelected>
-                </div>
+                {this.renderPlanHilight()}
+
               </section>
             </div>
           </MainPanel>
@@ -129,22 +261,26 @@ class SelectPlan extends React.Component {
                     Subscribe monthly <br />
                   </ChoiceBox>
                   <br /><br />
-                  <PriceBox >
-                    <h2>HKD 999</h2>
-                    <br />
-                    <PriceCondition>Charged every month, for minimum 3-months' purchase</PriceCondition>
-                  </PriceBox >
+                  <PriceBoxDetail>
+                    <PriceBox >
+                      <h2>HKD 999</h2>
+                      <br />
+                      <PriceCondition>Charged every month, for minimum 3-months' purchase</PriceCondition>
+                    </PriceBox >
+                  </PriceBoxDetail>
                 </div>
                 <div style={{ width: '50%' }}>
                   <ChoiceBox><input type="radio" name="paymentmethod" value="optionB" />
                     Subscribe annually<br />
                   </ChoiceBox>
-                  <PaymentMText>Discount offered for annual subscription!</PaymentMText>
-                  <PriceBox >
-                    <h2>HKD 799</h2>
-                    <br />
-                    <PriceCondition>Charged every month, for 1-year purchase</PriceCondition>
-                  </PriceBox>
+                  <PriceBoxDetail>
+                    <PaymentMText>Discount offered for annual subscription!</PaymentMText>
+                    <PriceBox >
+                      <h2>HKD 799</h2>
+                      <br />
+                      <PriceCondition>Charged every month, for 1-year purchase</PriceCondition>
+                    </PriceBox>
+                  </PriceBoxDetail>
                 </div>
               </PayChoices>
             </section>
@@ -161,7 +297,7 @@ class SelectPlan extends React.Component {
             </section>
           </SubsBox>
           <QuotaBox>
-            <section style={{ padding: '5px 27px 33px 29px' }}>
+            <section style={{ padding: '5px 27px 33px 29px', width: '100%' }}>
               <PanelHeaderText>Added quota</PanelHeaderText>
               <PanelSubHeaderText>Select to add quota to the below features</PanelSubHeaderText>
               <PayChoices>
@@ -170,14 +306,17 @@ class SelectPlan extends React.Component {
                     Add quota <br />
                   </ChoiceBox>
                   <br />
-                  <div>
+                  <PriceBoxDetail>
                     <p>Out-of-network Messaging  <b>+3 per week</b></p>
                     <p>Opportunity Post  <b>+1</b></p>
-                    <p style={{color: '#8c8c8c'}}>HKD 30 per month</p>
+                    <p style={{ color: '#8c8c8c' }}>HKD 30 per month</p>
                     <PaymentMText>Learn More</PaymentMText>
-                  </div >
+                  </PriceBoxDetail>
                 </div>
               </PayChoices>
+              <hr />
+              <p>By clicking "Accept and Continue", you agree to the rules, restrictions and terms & conditions</p>
+              <button> Confirm and Pay </button>
             </section>
           </QuotaBox>
         </PanelArea>
@@ -274,7 +413,7 @@ width: 25%;
 padding: 8px;
 margin: 3px;
 cursor: pointer;
-border: 1px solid #d1d1d1;
+border: ${props => props.borderColor};
 border-radius: 2px;
 background-color: #ffffff;
 `;
@@ -379,11 +518,12 @@ text-decoration: none solid rgb(28, 28, 28);
 line-height: 17px;
 `;
 const PriceBox = styled.div`
-
 text-align: 'left'
-
 `;
-
+const PriceBoxDetail = styled.div`
+padding: 0px 0px 0px 10px;
+width: 100%;
+`;
 const SelectMonth = styled.select`
 width: 53px;
 height: 28px;
