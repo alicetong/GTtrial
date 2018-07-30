@@ -2,17 +2,11 @@ import React, { PureComponent } from 'react';
 import { connect } from 'unistore/react';
 import styled from 'styled-components';
 import { actions } from '~/Store';
-import {BrowserRouter, Route} from 'react-router-dom';
+import { BrowserRouter ,  Route } from "react-router-dom";
 import SelectPlan from './components/SelectPlan';
 import Payment from './components/Payment';
 import Navbar from './components/NavBar';
 import Footer from './components/Footer';
-
-const AppWrapper = styled.div`
-  height: 100%;
-  position: relative;
-  background-color: #e8e8e8;
-`;
 
 class App extends PureComponent {
   componentDidMount() {
@@ -20,23 +14,18 @@ class App extends PureComponent {
   }
   render() {
     return (
+
       <BrowserRouter>
-        <AppWrapper>
+         <AppWrapper>
           <Navbar />
-          <div>
-            <Route exact={true} path='/' render={() => (
-              <div>
-                <SelectPlan />
-              </div>
-            )} />
-            <Route exact={true} path='/payment' render={() => (
-              <div>
-                <Payment />
-              </div>
-            )} />
-          </div>
+          <AdvertiseText>Online MBA in 1 Year  — Online MBA International Business in 1 Year. Get more information!</AdvertiseText>
+
+          <Route exact path="" component={ SelectPlan} />
+          <Route exact path="/payment" component={Payment} />
+
         </AppWrapper>
-      </BrowserRouter>
+        </BrowserRouter>
+
     );
   }
 }
@@ -45,3 +34,18 @@ export default connect(
   state => state,
   actions
 )(App);
+
+
+
+const AppWrapper = styled.div`
+  height: 100%;
+  position: relative;
+  background-color: #e8e8e8;
+`;
+const AdvertiseText = styled.h6`
+text-align:center;
+font-size: 14px;
+color: #000000;
+font-weight:300;
+`;
+

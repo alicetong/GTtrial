@@ -28,16 +28,15 @@ class SelectPlan extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.renderPlanHilight = this.renderPlanHilight.bind(this);
+    this.redirectToTarget = this.redirectToTarget.bind(this);
   }
 
   handleChange = (event) => {
-    console.log(event.target.name,'eventN')
-    console.log(event.target.value,'eventV')
     this.setState({
       [event.target.name]: event.target.value
     });
 
-    if(event.target.name === 'paymentplan'){
+    if (event.target.name === 'paymentplan') {
       if (event.target.value === 'option2') {
         this.setState({
           priceMonthly: 495,
@@ -134,7 +133,7 @@ class SelectPlan extends React.Component {
             <PlanSelectedDetail>Message users outside your connections; <b>40 users per week</b></PlanSelectedDetail>
           </PlanSelected>
           <PlanSelected>
-            <PlanSelectedIcon src={IconD41} />
+            <PlanSelectedIcon src={IconD41} style={{ width: '59px', height: '59px', margin: '-10px -5px -20px -12px' }} />
             <PlanSelectedIcon src={IconD42} />
             <PlanSelectedHeader>Opportunity Posts</PlanSelectedHeader>
             <PlanSelectedDetail>Post opportunities and projects for recruitment or collaboration;<b> 5 posts simultaneously</b></PlanSelectedDetail>
@@ -195,43 +194,46 @@ class SelectPlan extends React.Component {
   }
 
   renderSubsPeriod = () => {
-    if(this.state.paymentmethod !== '' && this.state.paymentmethod === 'optionA'){
+    if (this.state.paymentmethod !== '' && this.state.paymentmethod === 'optionA') {
       return (
-        <div>              
+        <div>
           <SelectMonth>
-          {this.getRangeOptions(3,12)}
+            {this.getRangeOptions(3, 12)}
           </SelectMonth>
           Months
         </div>
-        )
-    }else if (this.state.paymentmethod !== '' && this.state.paymentmethod === 'optionB'){
+      )
+    } else if (this.state.paymentmethod !== '' && this.state.paymentmethod === 'optionB') {
       return (
-        <div>              
+        <div>
           <SelectMonth>
-          {this.getRangeOptions(1,5)}
+            {this.getRangeOptions(1, 5)}
           </SelectMonth>
           Year(s)
         </div>
-        )
-    }else{
+      )
+    } else {
       return (
-        <div>              
+        <div>
           <SelectMonth>
-          {this.getRangeOptions(1,12)}
+            {this.getRangeOptions(1, 12)}
           </SelectMonth>
           Months
         </div>
-        )
+      )
     }
 
   }
 
-  getRangeOptions = (start,end) => {
+  getRangeOptions = (start, end) => {
     var arr = [];
     for (let i = start; i <= end; i++) {
-        arr.push(<option key={i} value="{i}">{i}</option>)
+      arr.push(<option key={i} value="{i}">{i}</option>)
     }
-    return arr; 
+    return arr;
+  }
+  redirectToTarget = () => {
+    this.props.history.push('/payment')
   }
 
   render() {
@@ -240,7 +242,7 @@ class SelectPlan extends React.Component {
     const { priceMonthly, priceYearly } = this.state
     return (
       <div>
-        <AdvertiseText>Online MBA in 1 Year  — Online MBA International Business in 1 Year. Get more information!</AdvertiseText>
+        
         <PanelArea>
           <MainPanel>
             <div style={{ width: '100%' }}>
@@ -322,7 +324,7 @@ class SelectPlan extends React.Component {
               </section>
             </div>
           </MainPanel>
-          <SideBar/>
+          <SideBar />
           {this.renderApplyMember()}
           <MainPanel>
             <section style={{ padding: '5px 27px 33px 29px' }}>
@@ -331,11 +333,11 @@ class SelectPlan extends React.Component {
               <PayChoices>
                 <div style={{ width: '50%' }}>
                   <ChoiceBox>
-                  <input type='radio' 
-                    name='paymentmethod' 
-                    value='optionA' 
-                    checked={this.state.paymentmethod === 'optionA'}
-                    onChange={this.handleChange} />
+                    <input type='radio'
+                      name='paymentmethod'
+                      value='optionA'
+                      checked={this.state.paymentmethod === 'optionA'}
+                      onChange={this.handleChange} />
                     Subscribe monthly <br />
                   </ChoiceBox>
                   <br />
@@ -349,11 +351,11 @@ class SelectPlan extends React.Component {
                 </div>
                 <div style={{ width: '50%' }}>
                   <ChoiceBox>
-                    <input type='radio' 
-                    name='paymentmethod' 
-                    value='optionB' 
-                    checked={this.state.paymentmethod === 'optionB'}
-                    onChange={this.handleChange} />
+                    <input type='radio'
+                      name='paymentmethod'
+                      value='optionB'
+                      checked={this.state.paymentmethod === 'optionB'}
+                      onChange={this.handleChange} />
                     Subscribe annually<br />
                   </ChoiceBox>
                   <PriceBoxDetail>
@@ -394,9 +396,15 @@ class SelectPlan extends React.Component {
                   </PriceBoxDetail>
                 </div>
               </PayChoices>
-              <hr />
-              <p>By clicking 'Accept and Continue', you agree to the rules, restrictions and <a href="#">terms & conditions</a></p>
-              <Button align='right' text='Confirm and Pay' />
+              <Divider />
+              <Term>By clicking 'Accept and Continue', you agree to the rules, restrictions and <a href="#">terms & conditions</a></Term>
+            
+                <Button
+                  align='right' 
+                  text='Confirm and Pay'
+                  onClick={this.redirectToTarget}
+                />
+           
             </section>
           </MainPanel>
         </PanelArea>
@@ -407,12 +415,7 @@ class SelectPlan extends React.Component {
 
 export default SelectPlan;
 
-const AdvertiseText = styled.h6`
-text-align:center;
-font-size: 14px;
-color: #000000;
-font-weight:300;
-`;
+
 const PanelArea = styled.div`
 display: grid;
 grid-template-columns: repeat(4, 1fr);
@@ -576,4 +579,14 @@ font-size: 14px;
 color: #303030;
 text-decoration: none solid rgb(48, 48, 48);
 margin-right: 5px;
+`;
+
+const Divider = styled.hr`
+margin: 39px 0px 19px 0px;
+background-color: #e8e8e8;
+border: 1px solid #e8e8e8;
+opacity: .8;
+`;
+const Term = styled.p`
+margin: 15px 0px 29px 0px;
 `;

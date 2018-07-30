@@ -8,7 +8,9 @@ class GoTButton extends React.Component {
         return (
             <Button
                 float={this.props.align ? this.props.align : 'left'}
-                type={this.props.type ? this.props.type : 'button'}>
+                type={this.props.type ? this.props.type : 'button'}
+                onClick={this.props.onClick}
+            >
                 {this.props.text}
             </Button>
         )

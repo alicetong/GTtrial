@@ -35,6 +35,7 @@ class SideBar extends React.Component {
 export default SideBar;
 
 const SidePanel = styled.div`
+max-height: 500px;
 grid-column: span 1;
 display:flex;
 background-color: #ffffff;
