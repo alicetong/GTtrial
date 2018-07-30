@@ -2,20 +2,42 @@ import React from 'react';
 import styled from 'styled-components';
 import SideBar from './SideBar';
 import Translation from './Translation';
+import Quota from './Quota';
+import QuotaSelect from './QuotaSelect';
+import QuotaSum from './QuotaSum';
+import Payment from './PaymentSuccess';
 class Payments extends React.Component {
 
+    constructor() {
+        super();
 
+        this.state = {
+            step: 2,
+
+        };
+        this.renderSteps = this.renderSteps.bind(this);
+        this.handleNextStep = this.handleNextStep.bind(this)
+
+    }
+    handleNextStep = () => {
+        this.setState({
+            step: this.state.step + 1
+        })
+    }
+    renderSteps = () => {
+        
+        switch (this.state.step) {
+            case 1:
+                return <PanelArea><MainPanel><Translation nextStep={this.handleNextStep} /></MainPanel><SideBar /></PanelArea>
+            case 2:
+                return <PanelArea><Quota /><SideBar/><QuotaSelect/><QuotaSum  nextStep={this.handleNextStep}/></PanelArea>
+            case 3:
+                return <PanelArea><MainPanel><Payment /></MainPanel><SideBar /></PanelArea>
+
+        }
+    }
     render() {
-        return (
-            <div>
-                <PanelArea>
-                    <MainPanel>
-                        <Translation />
-                    </MainPanel>                    
-                        <SideBar />                    
-                </PanelArea>
-            </div>
-        );
+        return this.renderSteps()
     }
 }
 

@@ -15,10 +15,13 @@ class Translation extends React.Component {
             promocode: ''
         };
         this.handleChange = this.handleChange.bind(this);
-
+        this.handleNext = this.handleNext.bind(this)
     }
     handleChange = (event) => {
-        this.setState({ value: event.target.value });
+        this.setState({ [event.target.name]: event.target.value });
+    }
+    handleNext = () => {
+        this.props.nextStep()
     }
     render() {
         const { contactname, email, numberphone, phone, promocode } = this.state
@@ -53,7 +56,7 @@ class Translation extends React.Component {
                         <img style={{width: '139px',height: '28px', margin: '15px 0px'}} src={Card}/><br/>
                         </InlineInputs>
                         <Label>Total Price</Label><br />
-                        <p>99.30 Hong Kong Dollar</p>
+                        <p><b>99.30 Hong Kong Dollar</b></p>
                     </form>
                     <form>
                         <Label>Use promotion code (if applicable)</Label><br />
@@ -67,7 +70,7 @@ class Translation extends React.Component {
                     <Button
                         align='right'
                         text='Confirm and Pay'
-                        onClick={this.redirectToTarget}
+                        onClick={this.handleNext}
                     />
                     </div>
                 </section>
@@ -82,7 +85,7 @@ const HeaderText = styled.div`
 font-size: 16px;
 color: #303030;
 font-weight: 700;
-margin: 16px 0px 5px 0px;
+margin: 16px 0px 0px 0px;
 padding: 0px 0px 7px 18px;
 text-align: left;
 float: left;
@@ -93,13 +96,13 @@ font-family: Roboto;
 font-size: 16px;
 color: #c8c8c8;
 font-weight: 700;
-margin: 16px 0px 5px 0px;
+margin: 16px 17px 0px 0px;
 padding: 0px 0px 7px 18px;
 text-decoration: none solid rgb(200, 200, 200);
 text-align: right;
 float: right;
 width:100%;
-margin-right: 17px;
+
 `;
 
 const PanelHeaderText = styled.h3`
