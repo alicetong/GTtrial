@@ -12,7 +12,7 @@ class Payments extends React.Component {
         super();
 
         this.state = {
-            step: 2,
+            step: 1,
 
         };
         this.renderSteps = this.renderSteps.bind(this);

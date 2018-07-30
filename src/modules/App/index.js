@@ -19,10 +19,9 @@ class App extends PureComponent {
          <AppWrapper>
           <Navbar />
           <AdvertiseText>Online MBA in 1 Year  — Online MBA International Business in 1 Year. Get more information!</AdvertiseText>
-
           <Route exact path="" component={ SelectPlan} />
           <Route exact path="/payment" component={Payment} />
-
+          <Footer />
         </AppWrapper>
         </BrowserRouter>
 

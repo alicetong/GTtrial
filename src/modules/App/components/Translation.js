@@ -112,12 +112,6 @@ font-weight: 700;
 text-decoration: none solid rgb(48, 48, 48);
 `;
 
-const Divider = styled.hr`
-margin: 39px 0px 19px 0px;
-background-color: #e8e8e8;
-border: 1px solid #e8e8e8;
-opacity: .8;
-`;
 
 const Label = styled.label`
 
